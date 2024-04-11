@@ -19,9 +19,8 @@ class Person {
   }
   removeHobby(hobbyToRemove) {
     this.hobbies = this.hobbies.filter((element) => {
-      return (element !== hobbyToRemove);
-    
-  });
+      return element !== hobbyToRemove;
+    });
   }
   // this.hobbies to target that item, filter will tell the pc to take a certain condition
   // that condition is to check if two conditions are not equal using !==(comparison operator) followed by hobbyToRemove is for the hobby to remove from the list
@@ -30,13 +29,14 @@ class Person {
   }
 }
 
-
 // splice version
 // The problem with find is you need to know whats at the certain index
 // Then when you find that index it ONLY removes from that one index
 // So if you have the same thing at multiple indexes it only removes the first
 // could also do a 'for'f loop
-const index = this.hobbies.findIndex((element) => { return (element == hobby)});
+const index = this.hobbies.findIndex((element) => {
+  return element == hobby;
+});
 this.hobbies.splice(index, 1);
 // why does this work?
 
@@ -59,8 +59,6 @@ this.hobbies.splice(index, 1);
 // 1 is the number of elements to remove from the array starting at the index.
 // After this line executes, the hobbies array will have one less element, as the element at the specified index has been removed.
 
-
-
 // Exercise 2 Section
 console.log("EXERCISE 2:\n==========\n");
 // 1.Use class notation to create a class named Coder that inherits from the Person class
@@ -74,7 +72,7 @@ class Coder extends Person {
   constructor(name, pets, residence, hobbies) {
     // The super() function is used to initialize the attributes of the parent class
     super(name, pets, residence, hobbies);
-    //   use .this to add the string per the instructions
+    //   use .this to add the string per the instructions, this.occupation is specific to only this class, not 'class Person'
     this.occupation = "Full Stack Web Developer";
   }
   // 5a:
@@ -84,8 +82,8 @@ class Coder extends Person {
 }
 // Exercise 3 Section
 console.log("EXERCISE 3:\n==========\n");
-const newPerson = new Person("Dan", 3, "California", "MMA");
-const newCoder = new Coder("Bob", 1, "Nevada", "running");
+const newPerson = new Person("Dan", 3, "California", ["MMA"]);
+const newCoder = new Coder("Bob", 1, "Nevada", ["running"]);
 
 console.log(newPerson);
 newPerson.addHobby("Swimming");
@@ -102,7 +100,30 @@ console.log("EXERCISE 4:\n==========\n");
 // 7. Declare a method called displayResult() that will console.log the result property stored on the object
 // 8. Test your work by instantiating an object from your class (using the class constructor), and calling some of the calculator methods
 class Calculator {
-    constructor() {
-        this.result = 0;
+  constructor() {
+    this.result = 0;
+    add(a, b) {
+      this.result = a + b;
+      return this.result;
+    }
+    subtract(a, b) {
+      this.result = a - b;
+      return this.result;
+    }
+    multiply(a, b) {
+      this.result = a * b;
+      return this.result;
+    }
+    divide(a, b) {
+      this.result = a / b;
+      return this.result;
+    }
 
-    };
+    displayresult(){
+      console.log(this.result);
+    }
+  }
+}
+const calc = new Calculator();
+calc.add(2, 3);
+calc.displayResult();
