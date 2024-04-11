@@ -18,7 +18,10 @@ class Person {
     this.hobbies.push(newHobby);
   }
   removeHobby(hobbyToRemove) {
-    this.hobbies = this.hobbies.filter((hobbies) => hobbies !== hobbyToRemove);
+    this.hobbies = this.hobbies.filter((element) => {
+      return (element !== hobbyToRemove);
+    
+  });
   }
   // this.hobbies to target that item, filter will tell the pc to take a certain condition
   // that condition is to check if two conditions are not equal using !==(comparison operator) followed by hobbyToRemove is for the hobby to remove from the list
@@ -30,20 +33,27 @@ class Person {
 
 // splice version
 // The problem with find is you need to know whats at the certain index
+// Then when you find that index it ONLY removes from that one index
+// So if you have the same thing at multiple indexes it only removes the first
 // could also do a 'for'f loop
-// const index = this.hobbies.findIndex((element) => { return (element == hobby)});
-// this.hobbies.splice(index, 1);
+const index = this.hobbies.findIndex((element) => { return (element == hobby)});
+this.hobbies.splice(index, 1);
 // why does this work?
+
 // const index = this.hobbies.findIndex((element) => { return (element == hobby)});
 
 // This line finds the index of an element in the hobbies array that matches a certain condition.
+
 // this.hobbies.findIndex(...) searches for an element in the hobbies array and returns its index.
+
 // (element) => { return (element == hobby)} is a callback function passed to findIndex(). It's an arrow function that checks if each element in the hobbies array is equal to the hobby being searched for.
+
 // If the condition (element == hobby) is true for any element in the array, findIndex() returns the index of that element. If no matching element is found, it returns -1.
+
 // The result is stored in the index variable.
+
 // this.hobbies.splice(index, 1);
 
-// This line removes an element from the hobbies array at a specific index.
 // this.hobbies.splice(...) is a method that changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
 // index is the index at which to start changing the array. In this case, it's the index of the element we want to remove.
 // 1 is the number of elements to remove from the array starting at the index.
