@@ -2,7 +2,7 @@ console.log("Hello World!\n==========\n");
 
 // Exercise 1 Section
 console.log("EXERCISE 1:\n==========\n");
-// created a class named Persn and plug in parameters
+// created a class named Person and plug in parameters
 class Person {
   constructor(name, pets, residence, hobbies) {
     // use this. to assign open paramaters
@@ -12,19 +12,44 @@ class Person {
     this.hobbies = hobbies;
   }
   // Now I want to add a brand new undefined hobby. call it addHobby
-  // Add this newHobby into the bucket(paramter)
+  // Add this newHobby into the bucket(paramater)
   // .push will add a element to the end of the array, specifically to hobbies in this case
-  // Add/remove/greeting can be called up in later exercises now
   addHobby(newHobby) {
     this.hobbies.push(newHobby);
   }
   removeHobby(hobbyToRemove) {
     this.hobbies = this.hobbies.filter((hobbies) => hobbies !== hobbyToRemove);
   }
+  // this.hobbies to target that item, filter will tell the pc to take a certain condition
+  // that condition is to check if two conditions are not equal using !==(comparison operator) followed by hobbyToRemove is for the hobby to remove from the list
   greeting() {
     console.log("Hello fellow person!");
   }
 }
+
+
+// splice version
+// The problem with find is you need to know whats at the certain index
+// could also do a 'for'f loop
+// const index = this.hobbies.findIndex((element) => { return (element == hobby)});
+// this.hobbies.splice(index, 1);
+// why does this work?
+// const index = this.hobbies.findIndex((element) => { return (element == hobby)});
+
+// This line finds the index of an element in the hobbies array that matches a certain condition.
+// this.hobbies.findIndex(...) searches for an element in the hobbies array and returns its index.
+// (element) => { return (element == hobby)} is a callback function passed to findIndex(). It's an arrow function that checks if each element in the hobbies array is equal to the hobby being searched for.
+// If the condition (element == hobby) is true for any element in the array, findIndex() returns the index of that element. If no matching element is found, it returns -1.
+// The result is stored in the index variable.
+// this.hobbies.splice(index, 1);
+
+// This line removes an element from the hobbies array at a specific index.
+// this.hobbies.splice(...) is a method that changes the contents of an array by removing or replacing existing elements and/or adding new elements in place.
+// index is the index at which to start changing the array. In this case, it's the index of the element we want to remove.
+// 1 is the number of elements to remove from the array starting at the index.
+// After this line executes, the hobbies array will have one less element, as the element at the specified index has been removed.
+
+
 
 // Exercise 2 Section
 console.log("EXERCISE 2:\n==========\n");
@@ -34,7 +59,7 @@ console.log("EXERCISE 2:\n==========\n");
 // 4. Still inside the constructor body, assign this.occupation as "Full Stack Web Developer"
 // 5. Override the greeting() method to console.log a custom greeting from a coder
 
-//1a. Now I want to make a subclass under Person called coder, a type of person with their own paramaters
+//1a. Make a subclass under Person called coder, a type of person with their own paramaters
 class Coder extends Person {
   constructor(name, pets, residence, hobbies) {
     // The super() function is used to initialize the attributes of the parent class
